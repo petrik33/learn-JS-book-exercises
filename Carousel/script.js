@@ -18,6 +18,6 @@ function createCarouselImage(imagePath) {
 let carouselContainer = document.getElementById("carousel-main");
 let imagesContainer = carouselContainer.querySelector("div.carousel-images");
 
-for(let str of imagePaths) {
+for(const str of imagesPaths) {
     imagesContainer.appendChild(createCarouselImage(str));
 }
