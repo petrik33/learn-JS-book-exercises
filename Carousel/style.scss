@@ -1,4 +1,10 @@
 .carousel {
+    display: flex;
+
+    .carousel-images {
+        display: flex;
+    }
+
     .carousel-image {
         border: 1px solid black;
     }

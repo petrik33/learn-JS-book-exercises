@@ -1,1 +1,9 @@
-
+.carousel {
+  display: flex;
+}
+.carousel .carousel-images {
+  display: flex;
+}
+.carousel .carousel-image {
+  border: 1px solid black;
+}/*# sourceMappingURL=style.css.map */
