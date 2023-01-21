@@ -6,14 +6,27 @@ list.addEventListener("click", function (event) {
         return;
     }
 
-    event.preventDefault();
-
-    if(!(event.ctrlKey || event.metaKey)) {
-        let itemsArray = this.querySelectorAll("li");
-        for(let li of itemsArray) {
-            li.classList.remove("selected");
-        }
+    if(event.ctrlKey || event.metaKey) {
+        toggleSelect(item);
+    } else {
+        singleSelect(item);
     }
 
     item.classList.add("selected");
-})
+});
+
+list.addEventListener("mousedown", function(event) {
+    event.preventDefault();
+});
+
+function toggleSelect(li) {
+    li.classList.toggle('selected');
+}
+
+function singleSelect(li) {
+    let selected = ul.querySelectorAll('.selected');
+    for(let elem of selected) {
+        elem.classList.remove('selected');
+    }
+    li.classList.add('selected');
+}
