@@ -32,15 +32,23 @@ function pinTooltipToElement(tooltipElem, pinElem, pinOffset) {
     tooltipElem.style.left = pinX + 'px';
 }
 
+function hasParent(element) {
+    return element.parentNode != undefined;
+}
+
 function onMouseOverShowTooltip(event) {
     let target = event.target;
-    let tooltipHtml = target.dataset.tooltip;
-    if(!tooltipHtml) {
+    let parent = target.closest('[data-tooltip]')
+
+    if(!parent) {
         return;
     }
+
+    let tooltipHtml = parent.dataset.tooltip;
+
     tooltip = createTooltip(tooltipHtml);
-    target.appendChild(tooltip);
-    pinTooltipToElement(tooltip, target, 5);
+    parent.appendChild(tooltip);
+    pinTooltipToElement(tooltip, parent, 5);
 }
 
 function onMouseOutHideTooltip(event) {
