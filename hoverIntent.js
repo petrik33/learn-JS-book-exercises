@@ -17,6 +17,9 @@ class HoverIntent {
     this.over = over;
     this.out = out;
 
+    this.prevClientX = -1;
+    this.prevClientY = -1;
+
     // убедитесь, что "this" сохраняет своё значение для обработчиков.
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseOver = this.onMouseOver.bind(this);
@@ -44,7 +47,8 @@ class HoverIntent {
 
 
   destroy() {
-    /* ваш код для отключения функциональности и снятия всех обработчиков */
+    this.elem.removeEventListener("mouseover", this.onMouseOver);
+    this.elem.removeEventListener("mouseout", this.onMouseOut);
   }
 
 }
