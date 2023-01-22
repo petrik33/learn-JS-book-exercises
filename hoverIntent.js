@@ -19,11 +19,22 @@ class HoverIntent {
 
     this.prevClientX = -1;
     this.prevClientY = -1;
+    this.prevTime = -1;
+
+    this.lastClientX = -1;
+    this.lastClientY = -1;
+    this.lastTime = -1;
+
+    this.checkSpdInterval = null;
+
+    this.onElem = false;
+    this.overElem = false;
 
     // убедитесь, что "this" сохраняет своё значение для обработчиков.
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseOver = this.onMouseOver.bind(this);
     this.onMouseOut = this.onMouseOut.bind(this);
+    this.trackSpeed = this.trackSpeed.bind(this);
 
     // назначаем обработчики
     elem.addEventListener("mouseover", this.onMouseOver);
@@ -34,21 +45,73 @@ class HoverIntent {
   }
 
   onMouseOver(event) {
-    /* ... */
+    if (this.onElem) {
+      return;
+    }
+
+    this.onElem = true;
+
+    this.prevClientX = event.clientX;
+    this.prevClientY = event.clientY;
+    this.prevTime = Date.now();
+
+    this.elem.addEventListener("mousemove", this.onMouseMove);
+    this.checkSpdInterval = setInterval(this.trackSpeed, this.interval);
+  }
+
+  trackSpeed() {
+    let spd;
+
+    if (!this.lastTime || this.lastTime == this.prevTime) {
+      spd = 0;
+    } else {
+      let xMove = this.lastClientX - this.prevClientX;
+      let yMove = this.lastClientY - this.prevClientY;
+      let dist = Math.sqrt(Math.pow(xMove, 2) + Math.pow(yMove, 2));
+
+      let time = this.lastTime - this.prevTime;
+
+      spd = dist / time;
+    }
+
+    if (spd < this.sensitivity) {
+      this.overElem = true;
+      clearInterval(this.checkSpdInterval);
+      this.over.call(this.elem);
+    } else {
+      this.prevClientX = this.lastClientX;
+      this.prevClientY = this.lastClientY;
+      this.prevTime = this.lastTime;
+    }
   }
 
   onMouseOut(event) {
-    /* ... */
+    let toElement = event.relatedTarget;
+    if (toElement == this.elem || this.elem.contains(toElement)) {
+      return;
+    }
+
+    this.onElem = false;
+    this.elem.removeEventListener("mousemove", this.onMouseMove);
+    clearInterval(this.checkSpdInterval);
+
+    if (this.overElem) {
+      this.overElem = false;
+      this.out.call(this.elem);
+    }
   }
 
   onMouseMove(event) {
-    /* ... */
+    this.lastClientX = event.clientX;
+    this.lastClientY = event.clientY;
+    this.lastTime = Date.now();
   }
 
 
   destroy() {
     this.elem.removeEventListener("mouseover", this.onMouseOver);
     this.elem.removeEventListener("mouseout", this.onMouseOut);
+    this.elem.removeEventListener("mousemove", this.onMouseMove);
   }
 
 }
