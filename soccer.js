@@ -3,13 +3,14 @@ function clamp(value, minValue, maxValue) {
 }
 
 document.addEventListener("mousedown", (event) => {
-    event.preventDefault();
+    let draggable = event.target.closest('.draggable');
 
-    if (!event.target.classList.contains("draggable")) {
+    if (!draggable) {
         return;
     }
 
-    let draggable = event.target;
+    event.preventDefault();
+    draggable.ondragstart = () => false;
 
     let targetCbox = draggable.getBoundingClientRect();
     let shiftX = event.clientX - targetCbox.left;
@@ -62,7 +63,3 @@ document.addEventListener("mousedown", (event) => {
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseup", onMouseUp);
 });
-
-document.addEventListener("dragstart", (event) => {
-    event.preventDefault();
-})
