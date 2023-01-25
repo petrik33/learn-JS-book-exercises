@@ -1,0 +1,9 @@
+img {
+    box-sizing: border-box;
+}
+
+.loaded {
+    border: 5px solid #d8ead8;
+    border-radius: 20px;
+    transition: border 0.25s;
+}
