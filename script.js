@@ -8,7 +8,6 @@ function countInvestment(initial, interest, years) {
 }
 
 let form = document.forms.namedItem('calculator');
-let heightPerSum = 0.01;
 
 let monthsInput = form.elements.namedItem('months');
 let interestInput = form.elements.namedItem('interest');
@@ -20,17 +19,18 @@ let resultData = document.getElementById('money-after');
 let initialColumn = document.getElementById('height-before');
 let resultColumn = document.getElementById('height-after');
 
+let baseHeight = Number.parseInt(initialColumn.style.height);
+
 const recalculateInvestment = () => {
     let investment = countInvestment(initialInput.value,
         interestInput.value / 100, monthsInput.value / 12);
 
     resultData.innerHTML = investment.toString();
-    resultColumn.style.height = investment * heightPerSum + 'px';
+    resultColumn.style.height = (investment / initialInput.value) * baseHeight + 'px';
 }
 
 initialInput.addEventListener('input', (event) => {
     initialData.innerHTML = initialInput.value.toString();
-    initialColumn.style.height = (initialInput.value * heightPerSum) + 'px';
 
     recalculateInvestment();
 });
