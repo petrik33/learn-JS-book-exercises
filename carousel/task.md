@@ -1,8 +1,6 @@
 # Carousel
 
-Create a "carousel" -- a ribbon of images that can be scrolled by clicking on arrows.
-
-[iframe height=200 src="solution"]
+Create a "carousel" --- a ribbon of images that can be scrolled by clicking on arrows.
 
 Later we can add more features to it: infinite scrolling, dynamic loading etc.
 
