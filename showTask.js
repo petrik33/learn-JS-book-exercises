@@ -1,3 +1,5 @@
+import { marked } from "marked";
+
 const getFileText = async (file) => {
   const response = await fetch(file);
   const text = await response.text();
