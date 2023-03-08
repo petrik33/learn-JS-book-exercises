@@ -20,9 +20,9 @@
   top: 0;
 }
 
-/* .tooltip {
+#tooltip {
   position: absolute;
   background: #eee;
   border: 1px brown solid;
   padding: 3px;
-} */
+}
