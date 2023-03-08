@@ -1,0 +1,31 @@
+.carousel {
+  display: flex;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  height: 270px;
+  padding: auto;
+  margin: auto;
+  overflow: hidden;
+}
+.carousel .carousel-images {
+  overflow: hidden;
+}
+.carousel .carousel-images ul {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 0;
+  margin: 0;
+  transition: transform 250ms;
+}
+.carousel .carousel-images ul li {
+  display: inline-block;
+}
+.carousel .carousel-image {
+  box-sizing: border-box;
+  width: 270px;
+  height: 270px;
+  border: 1px solid black;
+  display: inline-block;
+}/*# sourceMappingURL=style.css.map */
