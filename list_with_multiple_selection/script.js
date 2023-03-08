@@ -11,8 +11,6 @@ list.addEventListener("click", function (event) {
     } else {
         singleSelect(item);
     }
-
-    item.classList.add("selected");
 });
 
 list.addEventListener("mousedown", function(event) {
