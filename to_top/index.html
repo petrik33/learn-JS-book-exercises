@@ -1,12 +1,15 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script defer src="../showTask.js"></script>
 </head>
 
 <body>
-
+  <div id="task" data-path="/to_top/task.md"></div>
   <div id="matrix">
     <script>
       for (let i = 0; i < 2000; i++) document.writeln(i)
