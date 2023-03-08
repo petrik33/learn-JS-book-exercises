@@ -10,6 +10,9 @@ const readTask = async (taskPath) => {
 }
 
 const task = document.getElementById('task');
+task.style.borderBottom = '1px solid black';
+task.style.marginBottom = '1em';
+
 const taskPath = task.dataset['path'];
 
 (async () => await readTask(taskPath))();
