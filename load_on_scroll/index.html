@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script defer src="../showTask.js"></script>
 </head>
 
 <body>
-
+  <div id="task" data-path="/load_on_scroll/task.md"></div>
   <p>Текст и картинки взяты с https://wikipedia.org.</p>
 
   <h3>Все изображения с <code>data-src</code> загружаются, когда становятся видимыми.</h3>
@@ -160,11 +163,12 @@
     с гейзерами жидкого азота. Тритон — единственный крупный спутник, движущийся в обратном направлении.
     Также Нептун сопровождается астероидами, называемыми троянцы Нептуна, которые находятся с ним в резонансе 1:1</p>
 
-   <figure>
-     <img src="placeholder.svg" data-src="https://ru.js.cx/clipart/solar/neptune.jpg" width="390" height="390">
-   </figure>
+  <figure>
+    <img src="placeholder.svg" data-src="https://ru.js.cx/clipart/solar/neptune.jpg" width="390" height="390">
+  </figure>
 
-   <script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
+
 </html>
