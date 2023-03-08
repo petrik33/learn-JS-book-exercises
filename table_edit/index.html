@@ -3,13 +3,14 @@
 
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="bagua.css">
+  <link rel="stylesheet" href="my.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script defer src="../showTask.js"></script>
 </head>
 
 <body>
-  <link rel="stylesheet" href="bagua.css">
-  <link rel="stylesheet" href="my.css">
-
-
+  <div id="task" data-path="/table_edit/task.md"></div>
   <p>Кликните на ячейку таблицы, чтобы отредактировать её. Нажмите ОК или ОТМЕНА, когда закончите.</p>
 
   <table id="bagua-table">
@@ -68,7 +69,7 @@
       </td>
     </tr>
 
-</table>
+  </table>
   <script src="script.js"></script>
 </body>
 
