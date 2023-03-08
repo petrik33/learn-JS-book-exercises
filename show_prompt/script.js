@@ -1,11 +1,3 @@
-function makeModal(elem) {
-    // document.addEventListener('click', (event) => {
-    //     if (!event.target.closest("#propmpt-form-container")) {
-    //         event.preventDefault();
-    //     }
-    // })
-}
-
 function showPrompt(html, callback) {
     let container = document.createElement('div');
     container.id = "prompt-form-container";
@@ -53,16 +45,16 @@ function showPrompt(html, callback) {
         closeForm();
     });
 
-    form.append(btnCancel);
-    makeModal(container);
+  form.append(btnCancel);
 
-    document.body.append(container);
-
+  document.body.append(container);
 }
 
 let btnPrompt = document.getElementById('show-prompt');
 btnPrompt.addEventListener('click', (event) => {
     showPrompt('Введите что-нибудь<br>...умное :', (value) => {
+      if (value) {
         alert(value);
+      }
     });
 })
