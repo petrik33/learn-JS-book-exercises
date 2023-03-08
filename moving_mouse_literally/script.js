@@ -1,7 +1,7 @@
 let mouse = document.getElementById("mouse");
 mouse.tabIndex = -1;
 
-const movement = 7;
+const movement = 9;
 
 function mouseMoveHorizontally(distance) {
     let curLeft = parseInt(mouse.style.left);
